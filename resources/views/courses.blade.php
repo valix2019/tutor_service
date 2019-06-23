@@ -4,20 +4,31 @@
     
     <h1>Courses</h1>
 
+    <ul class="list-group mb-3">
+        <li class="list-group-item"><a href="#courses_m">My courses</a></li>
+        @if(\Auth::user()->show_new)
+        <li class="list-group-item"><a href="#courses_n">New courses</a></li>
+        @endif
+        @if(\Auth::user()->show_top)
+        <li class="list-group-item"><a href="#courses_t">Top courses</a></li>
+        @endif
+        <li class="list-group-item"><a href="#courses_a">All courses</a></li>
+    </ul>
+
     <!-- courses variable from CourseControlle@index -->
-    @foreach($courses as $course)
+    @component('components.course_panel',['id'=>'courses_m','h1'=>'My courses','courses'=>$courses_m])
+    @endcomponent
 
-        <div class="card mb-3" style="width: 18rem;">
-            <div class="card-body">
-                <a href="{{route('courses.show',$course->id)}}"><h5 class="card-title">{{$course->Name}}</h5></a>
-                <p class="card-text">{{$course->Duration}} </p>
-                <p class="card-text">{{$course->Cost}} </p>
-                <p class="card-text">{{$course->Location}} </p>
-            </div>
-        </div>
-        
+    @if(\Auth::user()->show_new)
+        @component('components.course_panel',['id'=>'courses_n','h1'=>'New courses','courses'=>$courses_n])
+        @endcomponent
+    @endif
+    @if(\Auth::user()->show_top)
+        @component('components.course_panel',['id'=>'courses_t','h1'=>'Top courses','courses'=>$courses_t])
+        @endcomponent
+    @endif
 
-        
-    @endforeach
+    @component('components.course_panel',['id'=>'courses_a','h1'=>'All courses','courses'=>$courses_a])
+    @endcomponent
 
 @endsection

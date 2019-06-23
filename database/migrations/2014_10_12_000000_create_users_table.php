@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->enum('role', ['teacher', 'student','admin'])->default('student');
+            $table->boolean('show_new')->default(1);
+            $table->boolean('show_top')->default(1);
             $table->timestamps();
         });
     }

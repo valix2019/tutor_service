@@ -79,7 +79,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd((boolean)$request->input('show_new'),(boolean) $request->input('show_top'));
+        $user = User::findOrFail($id);
+        $user->show_new = (boolean)$request->input('show_new');
+        $user->show_top = (boolean)$request->input('show_top');
+        $user->save();
+
+        return redirect()->route('users.show',$id);
     }
 
     /**

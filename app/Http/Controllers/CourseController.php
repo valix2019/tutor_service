@@ -20,9 +20,21 @@ class CourseController extends Controller
     public function index()
     {
         //berem info vse kursi i schitivayem
-        $courses = Course::all();
-        // return view('courses',['coursesAll'=>$courses]);
-        return view('courses',compact('courses'));
+        $courses_m = \Auth::user()->courses()->get();
+        $courses_n = Course::latest()->get();
+
+        $courses_t_ids = \DB::table('users__courses')
+            ->select(\DB::raw('users__courses.course_id, count(*)'))
+            ->groupBy('users__courses.course_id')
+            ->orderBy(\DB::raw('count(*)'),'desc')
+            ->limit(3)
+            ->get()
+            ->pluck('course_id')->values()->all();
+        $courses_t = \DB::table('courses')->whereIn('id',$courses_t_ids)->get();
+
+        $courses_a = Course::all();
+        // dd($courses_m,$courses_n,$courses_t_ids,$courses_t,$courses_a);
+        return view('courses',compact('courses_m','courses_n','courses_t','courses_a'));
     }
     // return ('Hello');
 
