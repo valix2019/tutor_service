@@ -3,24 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use App\User;
+use App\ImageModel;
+use Image;
 
-
-class UserController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-   public function index()
+    public function index()
     {
-        Log::info('User with id '. \Auth::id() . ' accessed users.index page');
-        //berem info vse kursi i schitivayem
-        $users = User::all();
-        // return view('courses',['coursesAll'=>$courses]);
-        return view('users',compact('users'));
+        //
     }
 
     /**
@@ -30,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        // return view('user_create');
+        //
     }
 
     /**
@@ -40,13 +35,21 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validated_data = $request->validate([
-            'Name' => 'required|string',
-            'Surname' => 'requireD|string',
-            'Email' => 'required|string',
-            'Role' => 'required|string',
+    {  
+        $this->validate($request, [
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
         ]);
+        
+        $originalImage= $request->file('filename');
+        $thumbnailImage = Image::make($originalImage);
+        $originalPath = public_path().'\\images\\';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+
+        $imagemodel= new ImageModel();
+        $imagemodel->filename=time().$originalImage->getClientOriginalName();
+        $imagemodel->save();
+
+        return back()->with('success', 'Your images has been successfully Upload');
     }
 
     /**
@@ -57,8 +60,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('user',compact('user'));
+        //
     }
 
     /**
@@ -81,16 +83,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd((boolean)$request->input('show_new'),(boolean) $request->input('show_top'));
-        $user = User::findOrFail($id);
-        $user->show_new = (boolean)$request->input('show_new');
-        $user->show_top = (boolean)$request->input('show_top');
-        $user->save();
-
-        // logging into laravel-2019-06-23.log
-        Log::info('User with id '. $id . ' has changed courses view');
-
-        return redirect()->route('users.show',$id);
+        //
     }
 
     /**

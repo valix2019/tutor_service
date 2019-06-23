@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $image = \App\ImageModel::latest()->first();
+    return view('welcome',compact('image'));
 });
 
 Route::get('locale', function () {
@@ -27,7 +28,10 @@ Route::get('locale/{locale}', function ($locale) {
 
 Auth::routes();
 
+Route::get('/home/changeImage', 'HomeController@changeImage')->name('image.change');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('create','ImageController@store')->name('image.store');
 
 Route::get('/courses/first', 'CourseController@firstCourse')->name('courses.first');
 Route::get('/courses/{course}/apply', 'CourseController@apply')->name('courses.apply');

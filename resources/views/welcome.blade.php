@@ -79,17 +79,26 @@
                     @endauth
                 </div>
             @endif
+
+        <div>
             <div class="center">
               <h1>SMART</h1>  
             </div>
-             
-             
-            <div class="content">
-                <div class="title m-b-md">
-                      
+
+            @if($image)
+            <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <img style="width:100px;height:100px" src="/images/{{$image->filename}}" />
+                    </div>
                 </div>
 
-                            </div>
+                @if (\Auth::user()->role=='admin')
+                <a href="{{route('image.change')}}">Change</a>
+                @endif
+            @endif  
+        </div>
+
         </div>
         
     </body>

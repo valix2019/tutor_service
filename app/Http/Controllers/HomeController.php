@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ImageModel;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin')->only('changeImage');
     }
 
     /**
@@ -24,5 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function changeImage()
+    {
+
+        $image = ImageModel::latest()->first();
+        return view('homepage_photo_add', compact('image'));
     }
 }
