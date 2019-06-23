@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp64/www/final2/app/Http/Middleware/TeacherAdmin.php</file>
+            <file>file:/C:/wamp64/www/final2/resources/views/layouts/app.blade.php</file>
+            <file>file:/C:/wamp64/www/final2/resources/views/home.blade.php</file>
+            <file>file:/C:/wamp64/www/final2/app/Http/Controllers/UserController.php</file>
+            <file>file:/C:/wamp64/www/final2/database/migrations/2019_06_13_103049_create_courses_table.php</file>
+            <file>file:/C:/wamp64/www/final2/database/migrations/2019_06_13_103144_create_users__courses_table.php</file>
+            <file>file:/C:/wamp64/www/final2/app/Users_Courses.php</file>
+            <file>file:/C:/wamp64/www/final2/app/User.php</file>
+            <file>file:/C:/wamp64/www/final2/app/Course.php</file>
+            <file>file:/C:/wamp64/www/final2/app/Http/Controllers/CourseController.php</file>
+            <file>file:/C:/wamp64/www/final2/resources/views/users.blade.php</file>
+            <file>file:/C:/wamp64/www/final2/app/Http/Controllers/Controller.php</file>
+            <file>file:/C:/wamp64/www/final2/resources/views/courses.blade.php</file>
+            <file>file:/C:/wamp64/www/final2/resources/views/welcome.blade.php</file>
+            <file>file:/C:/wamp64/www/final2/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/C:/wamp64/www/final2/database/migrations/2014_10_12_100000_create_password_resets_table.php</file>
+        </group>
+    </open-files>
+</project-private>
