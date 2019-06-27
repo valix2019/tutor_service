@@ -41,9 +41,9 @@ class ImageController extends Controller
         ]);
         
         $originalImage= $request->file('filename');
-        $thumbnailImage = Image::make($originalImage);
+        $Image = Image::make($originalImage);
         $originalPath = public_path().'\\images\\';
-        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $Image->save($originalPath.time().$originalImage->getClientOriginalName());
 
         $imagemodel= new ImageModel();
         $imagemodel->filename=time().$originalImage->getClientOriginalName();

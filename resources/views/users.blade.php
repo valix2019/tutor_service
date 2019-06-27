@@ -2,7 +2,7 @@
 @section('content')
 <!-- extending parent template app.blade.php -->
     
-    <h1>Users</h1>
+    <h1>{{ __('messages.users') }}</h1>
 
 @foreach($users as $user)
 

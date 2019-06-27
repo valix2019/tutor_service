@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                @if (\Auth::user()->role=='admin')
+                @if (\Auth::user() && \Auth::user()->role=='admin')
                 <a href="{{route('image.change')}}">Change</a>
                 @endif
             @endif  

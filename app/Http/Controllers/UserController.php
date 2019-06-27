@@ -14,7 +14,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function index()
+    public function index()
     {
         Log::info('User with id '. \Auth::id() . ' accessed users.index page');
         //berem info vse kursi i schitivayem

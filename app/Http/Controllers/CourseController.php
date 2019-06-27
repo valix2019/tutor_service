@@ -156,7 +156,7 @@ class CourseController extends Controller
     }
 
     public function deleteApplication(Request $request){
-        DB::table('users__courses')
+        \DB::table('users__courses')
             ->where('user_id',$request->input('user_id'))
             ->where('course_id',$request->input('course_id'))->delete();
         return redirect()->route('courses.show',$request->input('course_id'));

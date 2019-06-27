@@ -38,13 +38,13 @@
                     </ul>
                     @if(\Auth::user())
                     <!-- Localization from file resources/lang/(en/ru)/messages.php -->
-                        <a href="{{route('courses.index')}}"> {{__('messages.courses')}} </a>
+                        <a href="{{route('courses.index')}}" class="mr-5"> {{__('messages.courses')}} </a>
                     @endif
                     @if(\Auth::user())
-                        <a href="{{route('users.index')}}"> {{__('messages.users')}} </a>
+                        <a href="{{route('users.index')}}" class="mr-5"> {{__('messages.users')}} </a>
                     @endif
                     @if(\Auth::user() && (\Auth::user()->role == 'admin' || \Auth::user()->role == 'teacher'))
-                        <a href="{{route('courses.create')}}"> Create </a>
+                        <a href="{{route('courses.create')}} "class="mr-5">{{__('messages.Create')}}</a>
                     @endif
 
                     <!-- Right Side Of Navbar -->
@@ -52,11 +52,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }} </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.Register') }} </a>
                                 </li>
                             @endif
                         @else
@@ -69,7 +69,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('messages.Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -77,7 +77,7 @@
                                     </form>
                                     
                                     
-                                    <a class="dropdown-item" href="{{ route('users.show',\Auth::id())}}">Profile</a>
+                                    <a class="dropdown-item " href="{{ route('users.show',\Auth::id())}}" style> {{ __('messages.Profile') }}</a>
                                 </div>
                             </li>
                         @endguest

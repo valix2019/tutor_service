@@ -2,17 +2,17 @@
 @section('content')
 <!-- extending parent template app.blade.php -->
     
-    <h1>Courses</h1>
+    <h1> {{__('messages.courses')}} </h1>
 
     <ul class="list-group mb-3">
-        <li class="list-group-item"><a href="#courses_m">My courses</a></li>
+        <li class="list-group-item"><a href="#courses_m">{{ __('messages.My courses') }}</a></li>
         @if(\Auth::user()->show_new)
-        <li class="list-group-item"><a href="#courses_n">New courses</a></li>
+        <li class="list-group-item"><a href="#courses_n">{{ __('messages.New courses') }}</a></li>
         @endif
         @if(\Auth::user()->show_top)
-        <li class="list-group-item"><a href="#courses_t">Top courses</a></li>
+        <li class="list-group-item"><a href="#courses_t">{{ __('messages.Top courses') }}</a></li>
         @endif
-        <li class="list-group-item"><a href="#courses_a">All courses</a></li>
+        <li class="list-group-item"><a href="#courses_a">{{ __('messages.All courses') }}</a></li>
     </ul>
 
     <!-- courses variable from CourseControlle@index -->

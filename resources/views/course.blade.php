@@ -10,26 +10,28 @@
         <div class="card-body">
             @foreach($course->students as $user)
                 <h5>{{$user->name}}
+                @if(\Auth::user()->role == 'admin')
                 <form action="{{route('courses.deleteApplication')}}" method="POST">
                     @csrf
-                    @method('DELETE')
                     <input type="text" name="user_id" hidden value="{{$user->id}}" required/>
                     <input type="text" name="course_id" hidden value="{{$course->id}}" required/>
                     <input class="btn btn-warning" type="submit" value="Delete"/>
                 </form>
+                @endif
                 </h5>
             @endforeach
         </div>
         <div class="card-body">
             @foreach($course->teachers as $user)
                 <h5>{{$user->name}}
+                @if(\Auth::user()->role == 'admin')
                 <form action="{{route('courses.deleteApplication')}}" method="POST">
                     @csrf
-                    @method('DELETE')
                     <input type="text" name="user_id" hidden value="{{$user->id}}" required/>
                     <input type="text" name="course_id" hidden value="{{$course->id}}" required/>
                     <input class="btn btn-warning" type="submit" value="Delete"/>
                 </form>
+                @endif
                 </h5>
             @endforeach
         </div>
